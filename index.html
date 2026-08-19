@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Live Stock Ticker</title>
+<style>
+  *{box-sizing:border-box}
+  html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#050505}
+  body{font-family:Arial,Helvetica,sans-serif;color:#f2f2f2}
+  .screen{
+    width:100vw;height:100vh;background:#050505;
+    padding:18px 28px;overflow:hidden;
+  }
+  .ticker{
+    display:flex;flex-wrap:wrap;align-content:flex-start;
+    gap:13px 28px;line-height:1.05;
+    font-size:clamp(22px,2.25vw,42px);font-weight:800;
+    text-transform:uppercase;
+  }
+  .item{white-space:nowrap}
+  .name{color:#f2f2f2;margin-right:8px}
+  .up{color:#35d36b}.down{color:#ff583f}
+  .note{
+    position:fixed;right:18px;bottom:8px;
+    font-size:12px;color:#666;text-transform:none;font-weight:400
+  }
+</style>
+</head>
+<body>
+<div class="screen">
+  <div class="ticker" id="ticker"></div>
+</div>
+
+<script>
+const stocks = [
+ ["NIFTY","26624","up"],["SENSEX","78581","up"],["BANK NIFTY","57739","down"],
+ ["NIFTY AUTO","29411","up"],["NIFTY MIDCAP100","63605","up"],["NIFTY NEXT50","74469","up"],
+ ["NIFTY SMALLCAP","19783","up"],["NIFTY IT","31404","up"],["NIFTY PHARMA","26563","up"],
+ ["NIFTY METAL","13256","up"],["NIFTY HEALTHCARE","16709","up"],["HDFC BANK","735.00","down"],
+ ["RELIANCE","1280.00","up"],["TATA STEEL","192.99","up"],["JIO FINANCIAL","261.95","up"],
+ ["ONGC","240.20","up"],["NTPC","349.90","up"],["BHARTI AIRTEL","1978.00","up"],
+ ["BHARTI ELEC","390","up"],["ETERNAL","310","up"],["AXIS BANK","1253.90","down"],
+ ["BANK OF BARODA","245.60","down"],["ICICI BANK","1450.10","down"],["IDFC BANK","85.30","down"],
+ ["KOTAK MAHINDRA","400.00","down"],["PNB","113.55","down"],["SBI","1055.00","down"],
+ ["YES BANK","22.97","down"],["BAJAJ AUTO","11800.00","up"],["MARUTI","14190.00","up"]
+];
+
+const el = document.getElementById("ticker");
+function render(){
+  el.innerHTML = stocks.map(s =>
+    `<span class="item"><span class="name">${s[0]}</span><span class="${s[2]}">${s[1]}</span></span>`
+  ).join("");
+}
+render();
+</script>
+</body>
+</html>
